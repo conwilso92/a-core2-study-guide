@@ -2,7 +2,7 @@
 
 A comprehensive study guide for the CompTIA A+ Core 2 (220-1202) certification exam, synthesized from course materials and official exam objectives. Built as a single dark-mode HTML file with full anchor navigation.
 
-🔗 **[View the Study Guide](https://conwilso92.github.io/aplus-core2-study-guide)**
+🔗 **[View the Study Guide](https://conwilso92.github.io/a-core2-study-guide)**
 
 ---
 
