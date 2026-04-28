@@ -54,4 +54,3 @@ Part of a broader CompTIA certification study toolkit:
 
 Built while studying for the CompTIA A+ certification at Star V Learning Centers, Jacksonville, FL. Materials synthesized from course slide decks and official 220-1202 exam objectives.
 
-**Certifications:** CompTIA A+ (Core 1 & Core 2 passed) · Network+ (in progress) · Security+ (in progress) · Server+ (in progress)
