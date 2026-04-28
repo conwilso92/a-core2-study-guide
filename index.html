@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CompTIA A+ Core 2 220-1202 Study Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Exo+2:wght@300;400;600;700;900&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0d12;--bg2:#0f1318;--bg3:#151b24;--bg4:#1a2230;
+    --border:#1e2d40;--border-bright:#2a4060;
+    --text:#c8d8e8;--text-dim:#6a8aaa;--text-bright:#e8f4ff;
+    --accent:#00b4ff;--accent2:#00e5a0;--accent3:#ff6b35;--accent4:#ffd700;--accent5:#b060ff;--red:#ff4466;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;font-size:15px;line-height:1.7;}
+  body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,180,255,0.012) 2px,rgba(0,180,255,0.012) 4px);pointer-events:none;z-index:1000;}
+  .site-header{background:linear-gradient(135deg,#060b10 0%,#0a1520 50%,#060b10 100%);border-bottom:1px solid var(--border-bright);padding:3rem 2rem 2.5rem;text-align:center;position:relative;overflow:hidden;}
+  .site-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(0,180,255,0.08) 0%,transparent 70%);}
+  .header-badge{display:inline-block;font-family:'Share Tech Mono',monospace;font-size:0.7rem;letter-spacing:0.2em;color:var(--accent);background:rgba(0,180,255,0.08);border:1px solid rgba(0,180,255,0.3);padding:0.3rem 1rem;border-radius:2px;margin-bottom:1.2rem;}
+  .site-header h1{font-family:'Exo 2',sans-serif;font-weight:900;font-size:clamp(2rem,5vw,3.5rem);color:var(--text-bright);letter-spacing:-0.02em;line-height:1.1;margin-bottom:0.5rem;position:relative;}
+  .site-header h1 span{color:var(--accent);text-shadow:0 0 30px rgba(0,180,255,0.4);}
+  .site-header .subtitle{font-family:'Share Tech Mono',monospace;color:var(--text-dim);font-size:0.85rem;letter-spacing:0.12em;margin-bottom:2rem;}
+  .header-stats{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;}
+  .stat-pill{font-family:'Share Tech Mono',monospace;font-size:0.75rem;color:var(--text-dim);border:1px solid var(--border);padding:0.35rem 0.9rem;border-radius:20px;background:rgba(255,255,255,0.02);}
+  .stat-pill strong{color:var(--accent2);}
+  .container{max-width:1100px;margin:0 auto;padding:2rem 1.5rem;}
+  .toc-nav{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:1.5rem;margin-bottom:2.5rem;}
+  .toc-nav h2{font-family:'Share Tech Mono',monospace;font-size:0.7rem;letter-spacing:0.2em;color:var(--accent);text-transform:uppercase;margin-bottom:1rem;}
+  .toc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:0.4rem;}
+  .toc-item{display:flex;align-items:center;gap:0.6rem;padding:0.45rem 0.7rem;border-radius:3px;text-decoration:none;color:var(--text-dim);font-size:0.82rem;transition:all 0.15s;border:1px solid transparent;}
+  .toc-item:hover{color:var(--text-bright);background:rgba(0,180,255,0.06);border-color:var(--border);}
+  .toc-num{font-family:'Share Tech Mono',monospace;font-size:0.65rem;color:var(--accent);min-width:2rem;}
+  .domain-weights{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:1.5rem;margin-bottom:2.5rem;}
+  .domain-weights h2{font-family:'Share Tech Mono',monospace;font-size:0.7rem;letter-spacing:0.2em;color:var(--accent);margin-bottom:1.2rem;}
+  .weight-row{display:flex;align-items:center;gap:1rem;margin-bottom:0.7rem;font-size:0.8rem;}
+  .weight-label{min-width:260px;color:var(--text-dim);}
+  .weight-bar-bg{flex:1;height:6px;background:var(--bg4);border-radius:3px;overflow:hidden;}
+  .weight-bar{height:100%;border-radius:3px;}
+  .weight-pct{font-family:'Share Tech Mono',monospace;font-size:0.75rem;min-width:2.5rem;text-align:right;}
+  .chapter{background:var(--bg2);border:1px solid var(--border);border-radius:4px;margin-bottom:2rem;overflow:hidden;}
+  .chapter-header{display:flex;align-items:center;gap:1.2rem;padding:1.2rem 1.5rem;border-bottom:1px solid var(--border);background:var(--bg3);}
+  .chapter-num{font-family:'Share Tech Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;color:var(--accent);background:rgba(0,180,255,0.08);border:1px solid rgba(0,180,255,0.2);padding:0.25rem 0.6rem;border-radius:2px;white-space:nowrap;}
+  .chapter-title{font-family:'Exo 2',sans-serif;font-weight:700;font-size:1.1rem;color:var(--text-bright);flex:1;}
+  .chapter-obj{font-family:'Share Tech Mono',monospace;font-size:0.65rem;color:var(--text-dim);background:var(--bg4);border:1px solid var(--border);padding:0.2rem 0.6rem;border-radius:2px;white-space:nowrap;}
+  .chapter-body{padding:1.5rem;}
+  .section-block{margin-bottom:1.5rem;}
+  .section-block:last-child{margin-bottom:0;}
+  .section-title{font-family:'Exo 2',sans-serif;font-weight:600;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent2);margin-bottom:0.7rem;padding-bottom:0.4rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:0.5rem;}
+  .section-title::before{content:'▸';color:var(--accent);font-size:0.65rem;}
+  .def-grid{display:grid;grid-template-columns:minmax(170px,auto) 1fr;gap:0 1.2rem;font-size:0.83rem;}
+  .def-term{font-family:'Share Tech Mono',monospace;color:var(--accent4);padding:0.35rem 0;border-bottom:1px solid rgba(255,255,255,0.04);align-self:start;}
+  .def-val{color:var(--text);padding:0.35rem 0;border-bottom:1px solid rgba(255,255,255,0.04);line-height:1.5;}
+  .data-table{width:100%;border-collapse:collapse;font-size:0.8rem;margin-top:0.5rem;}
+  .data-table th{font-family:'Share Tech Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);background:var(--bg4);padding:0.6rem 0.8rem;text-align:left;border:1px solid var(--border);}
+  .data-table td{padding:0.5rem 0.8rem;border:1px solid var(--border);vertical-align:top;color:var(--text);}
+  .data-table tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+  .data-table tr:hover td{background:rgba(0,180,255,0.04);}
+  .hl-gold{font-family:'Share Tech Mono',monospace;color:var(--accent4);font-weight:bold;}
+  .hl-blue{font-family:'Share Tech Mono',monospace;color:var(--accent);font-weight:bold;}
+  .good{color:var(--accent2);}
+  .bad{color:var(--red);}
+  .neutral{color:var(--text-dim);}
+  .callout{border-left:3px solid;padding:0.8rem 1rem;border-radius:0 3px 3px 0;font-size:0.82rem;margin:0.8rem 0;line-height:1.55;}
+  .callout-exam{border-color:var(--accent4);background:rgba(255,215,0,0.05);color:var(--text);}
+  .callout-exam::before{content:'★ EXAM TIP  ';font-family:'Share Tech Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;color:var(--accent4);display:block;margin-bottom:0.35rem;}
+  .callout-warning{border-color:var(--accent3);background:rgba(255,107,53,0.05);color:var(--text);}
+  .callout-warning::before{content:'⚠ CRITICAL  ';font-family:'Share Tech Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;color:var(--accent3);display:block;margin-bottom:0.35rem;}
+  .callout-info{border-color:var(--accent);background:rgba(0,180,255,0.05);color:var(--text);}
+  .callout-info::before{content:'◈ NOTE  ';font-family:'Share Tech Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;color:var(--accent);display:block;margin-bottom:0.35rem;}
+  .concept-list{list-style:none;font-size:0.83rem;}
+  .concept-list li{padding:0.25rem 0 0.25rem 1.2rem;position:relative;color:var(--text);border-bottom:1px solid rgba(255,255,255,0.03);}
+  .concept-list li::before{content:'›';position:absolute;left:0;color:var(--accent);font-family:'Share Tech Mono',monospace;}
+  .concept-list li strong{color:var(--text-bright);font-weight:600;}
+  .concept-list li code{font-family:'Share Tech Mono',monospace;background:var(--bg4);border:1px solid var(--border);padding:0.05rem 0.35rem;border-radius:2px;font-size:0.8em;color:var(--accent2);}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
+  .mini-h{font-family:'Share Tech Mono',monospace;font-size:0.72rem;color:var(--text-dim);letter-spacing:0.12em;text-transform:uppercase;margin:0.8rem 0 0.4rem;}
+  .ts-steps{counter-reset:ts;}
+  .ts-step{display:flex;gap:1rem;padding:0.6rem 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.83rem;align-items:flex-start;}
+  .ts-step::before{counter-increment:ts;content:counter(ts);font-family:'Share Tech Mono',monospace;font-size:0.7rem;color:var(--accent);background:rgba(0,180,255,0.1);border:1px solid rgba(0,180,255,0.25);width:1.6rem;height:1.6rem;border-radius:2px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:0.1rem;}
+  .tag-row{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.4rem;}
+  .tag{font-family:'Share Tech Mono',monospace;font-size:0.7rem;padding:0.2rem 0.55rem;border-radius:2px;border:1px solid;}
+  .tag-blue{color:var(--accent);border-color:rgba(0,180,255,0.3);background:rgba(0,180,255,0.06);}
+  .tag-green{color:var(--accent2);border-color:rgba(0,229,160,0.3);background:rgba(0,229,160,0.06);}
+  .tag-orange{color:var(--accent3);border-color:rgba(255,107,53,0.3);background:rgba(255,107,53,0.06);}
+  .tag-gold{color:var(--accent4);border-color:rgba(255,215,0,0.3);background:rgba(255,215,0,0.06);}
+  .site-footer{text-align:center;padding:2rem;border-top:1px solid var(--border);font-family:'Share Tech Mono',monospace;font-size:0.7rem;color:var(--text-dim);letter-spacing:0.1em;margin-top:2rem;}
+  [id]{scroll-margin-top:1rem;}
+  p{font-size:0.83rem;color:var(--text);margin-bottom:0.6rem;}
+  @media(max-width:640px){
+    .two-col{grid-template-columns:1fr;}
+    .header-stats{gap:0.8rem;}
+    .toc-grid{grid-template-columns:1fr;}
+    .def-grid{grid-template-columns:1fr;gap:0;}
+    .def-term{border-bottom:none;padding-bottom:0;font-size:0.75rem;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-badge">220-1202 CERTIFICATION PREP</div>
+  <h1>CompTIA <span>A+ Core 2</span> Study Guide</h1>
+  <p class="subtitle">SYNTHESIZED FROM STAR V LEARNING CENTERS COURSE MATERIALS · JACKSONVILLE, FL</p>
+  <div class="header-stats">
+    <span class="stat-pill"><strong>12</strong> Modules</span>
+    <span class="stat-pill"><strong>5</strong> Exam Domains</span>
+    <span class="stat-pill">Exam <strong>220-1202</strong></span>
+    <span class="stat-pill">Paired with <strong>Core 2 Flashcard App</strong></span>
+  </div>
+</header>
+
+<div class="container">
+
+  <nav class="toc-nav">
+    <h2>// Table of Contents</h2>
+    <div class="toc-grid">
+      <a class="toc-item" href="#m11"><span class="toc-num">11</span> Managing Support Procedures</a>
+      <a class="toc-item" href="#m12"><span class="toc-num">12</span> Configuring Windows</a>
+      <a class="toc-item" href="#m13"><span class="toc-num">13</span> Managing Windows</a>
+      <a class="toc-item" href="#m14"><span class="toc-num">14</span> Supporting Windows</a>
+      <a class="toc-item" href="#m15"><span class="toc-num">15</span> Securing Windows</a>
+      <a class="toc-item" href="#m16"><span class="toc-num">16</span> Installing Operating Systems</a>
+      <a class="toc-item" href="#m17"><span class="toc-num">17</span> Supporting Other Operating Systems</a>
+      <a class="toc-item" href="#m18"><span class="toc-num">18</span> Configuring SOHO Network Security</a>
+      <a class="toc-item" href="#m19"><span class="toc-num">19</span> Managing Security Settings</a>
+      <a class="toc-item" href="#m20"><span class="toc-num">20</span> Supporting Mobile Software</a>
+      <a class="toc-item" href="#m21"><span class="toc-num">21</span> Using Data Security</a>
+      <a class="toc-item" href="#m22"><span class="toc-num">22</span> Implementing Operational Procedures</a>
+    </div>
+  </nav>
+
+  <div class="domain-weights">
+    <h2>// Exam Domain Weights (220-1202)</h2>
+    <div class="weight-row"><span class="weight-label">1. Operating Systems</span><div class="weight-bar-bg"><div class="weight-bar" style="width:31%;background:var(--accent)"></div></div><span class="weight-pct" style="color:var(--accent)">31%</span></div>
+    <div class="weight-row"><span class="weight-label">2. Security</span><div class="weight-bar-bg"><div class="weight-bar" style="width:25%;background:var(--accent2)"></div></div><span class="weight-pct" style="color:var(--accent2)">25%</span></div>
+    <div class="weight-row"><span class="weight-label">3. Software Troubleshooting</span><div class="weight-bar-bg"><div class="weight-bar" style="width:22%;background:var(--accent4)"></div></div><span class="weight-pct" style="color:var(--accent4)">22%</span></div>
+    <div class="weight-row"><span class="weight-label">4. Operational Procedures</span><div class="weight-bar-bg"><div class="weight-bar" style="width:22%;background:var(--accent3)"></div></div><span class="weight-pct" style="color:var(--accent3)">22%</span></div>
+  </div>
+
+  <!-- ═══ MODULE 11 – MANAGING SUPPORT PROCEDURES ═══ -->
+  <section class="chapter" id="m11">
+    <div class="chapter-header"><span class="chapter-num">MOD 11</span><h2 class="chapter-title">Managing Support Procedures</h2><span class="chapter-obj">Obj 4.1 · 4.6 · 4.7 · 1.1</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Documentation Hierarchy</div>
+        <div class="def-grid">
+          <span class="def-term">Policy</span><span class="def-val">High-level statement of organizational intent. Sets direction and expectations. "All user data must be encrypted at rest." All other documents derive from policy.</span>
+          <span class="def-term">Standard Operating Procedure (SOP)</span><span class="def-val">Step-by-step instructions for how to comply with a policy. Tells technicians exactly what to do. Examples: software installation procedure, new-user onboarding, end-user offboarding.</span>
+          <span class="def-term">Guidelines</span><span class="def-val">Recommendations for complex or variable situations. Not mandatory — advisory. "We recommend using a password manager."</span>
+          <span class="def-term">Knowledge Base</span><span class="def-val">Searchable repository of articles, SOPs, and resolved ticket documentation. Enables self-service (Tier 0) and faster agent resolution. Must be kept current.</span>
+          <span class="def-term">Lessons Learned / AAR</span><span class="def-val">After-Action Report for critical incidents. Solicits input from users, technicians, managers, and stakeholders. Identifies root cause and creates or revises SOPs. Filed in knowledge base.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Service Level Agreements (SLAs)</div>
+        <div class="def-grid">
+          <span class="def-term">Definition</span><span class="def-val">Defines expected service levels from internal departments or external vendors. Sets measurable metrics for uptime, response time, and performance.</span>
+          <span class="def-term">Uptime / The Nines</span><span class="def-val">99% = ~87.6 hrs/yr downtime · 99.9% = ~8.76 hrs/yr · 99.99% = ~52 min/yr · 99.999% = ~5.3 min/yr. Higher availability = more expensive to maintain.</span>
+          <span class="def-term">Internal SLA</span><span class="def-val">Resource sharing, maintenance scheduling, and service delivery between internal departments.</span>
+          <span class="def-term">External SLA</span><span class="def-val">ISP throughput guarantees, cloud service delivery, vendor support response times. Includes financial remedies (credits) for unmet metrics.</span>
+        </div>
+        <div class="callout callout-exam">99.99% uptime = 52 minutes of downtime per year. This is the "four nines" standard. Know this calculation — it appears directly on the exam.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Ticketing Systems & Escalation</div>
+        <div class="def-grid">
+          <span class="def-term">Ticket Lifecycle</span><span class="def-val">User contact → ticket generated → agent assigned → categorized by severity → troubleshoot or escalate → resolve → document → close.</span>
+          <span class="def-term">Severity Levels</span><span class="def-val">Low (minor inconvenience, workaround available) → Medium (impacts productivity) → High (critical function down) → Critical (outage affecting many users or systems).</span>
+          <span class="def-term">Tier 0</span><span class="def-val">Self-service. Knowledge base, FAQs, chatbots. User resolves their own issue. No agent needed.</span>
+          <span class="def-term">Tier 1</span><span class="def-val">Initial agent contact. First-call resolution for common issues. Basic diagnosis and troubleshooting.</span>
+          <span class="def-term">Tier 2</span><span class="def-val">Escalation to senior technicians or third-party support. Issues beyond Tier 1 capability.</span>
+          <span class="def-term">Tier 3</span><span class="def-val">Escalation to engineers, developers, or senior managers. Complex or critical issues requiring deep expertise or executive decisions.</span>
+        </div>
+        <div class="callout callout-exam">Ticket documentation must be clear (avoid jargon, plain language) and concise (as few words as possible). Fields: issue description, progress notes, resolution. Tickets may be reviewed by customers — write accordingly.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Professional Communication</div>
+        <ul class="concept-list">
+          <li><strong>Active listening</strong> — Let the customer finish. Do not interrupt. Confirm understanding by paraphrasing.</li>
+          <li><strong>Clarifying questions</strong> — Ask open-ended questions to understand the issue. "When did this start?" "What changed recently?"</li>
+          <li><strong>Positive attitude</strong> — View the situation as difficult, not the customer. Avoid negative or judgmental responses.</li>
+          <li><strong>Acknowledge concerns</strong> — Validate the customer's frustration before diving into solutions.</li>
+          <li><strong>Focus on solutions</strong> — Collaborative problem-solving. "Let's figure this out together."</li>
+          <li><strong>Maintain discretion</strong> — Do not post customer incidents on social media. Confidentiality is non-negotiable.</li>
+          <li><strong>Professional appearance</strong> — Dress appropriately for the environment. First impressions matter.</li>
+        </ul>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Operating System Types</div>
+        <table class="data-table">
+          <thead><tr><th>OS</th><th>Type</th><th>File System(s)</th><th>Key Notes</th></tr></thead>
+          <tbody>
+            <tr><td><span class="hl-gold">Windows</span></td><td>Closed-source commercial</td><td>NTFS, FAT32, ReFS, exFAT</td><td>Most common enterprise OS. Multiple editions (Home/Pro/Enterprise).</td></tr>
+            <tr><td><span class="hl-gold">macOS</span></td><td>Closed-source (Apple)</td><td>APFS (modern), HFS+ (legacy)</td><td>UNIX-based. Apple hardware only. Proprietary ecosystem.</td></tr>
+            <tr><td><span class="hl-gold">Linux</span></td><td>Open-source, UNIX-derived</td><td>ext4, XFS, Btrfs</td><td>Standard or rolling release models. Many distros (Ubuntu, Fedora, RHEL).</td></tr>
+            <tr><td><span class="hl-gold">Chrome OS</span></td><td>Google's Linux-based OS</td><td>ext4</td><td>Chromebooks only. Cloud-centric. Limited local software.</td></tr>
+            <tr><td><span class="hl-gold">iOS</span></td><td>Apple mobile OS</td><td>APFS</td><td>iPhone/iPad. Closed, walled garden. More restrictive than Android.</td></tr>
+            <tr><td><span class="hl-gold">Android</span></td><td>Google's Linux-based mobile OS</td><td>ext4, F2FS</td><td>Open-source core. Multiple manufacturers. More customizable than iOS.</td></tr>
+          </tbody>
+        </table>
+        <div class="callout callout-exam">End-of-life (EOL) = vendor stops issuing security patches. Running EOL software is a significant security risk. Always plan for OS lifecycle — upgrade or replace before EOL date.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ MODULE 12 – CONFIGURING WINDOWS ═══ -->
+  <section class="chapter" id="m12">
+    <div class="chapter-header"><span class="chapter-num">MOD 12</span><h2 class="chapter-title">Configuring Windows</h2><span class="chapter-obj">Obj 1.6 · 1.10 · 1.11</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Windows Settings vs Control Panel</div>
+        <div class="def-grid">
+          <span class="def-term">Windows Settings App</span><span class="def-val">Modern, touch-enabled primary configuration interface. Organized by headings (System, Accounts, Privacy, etc.). Microsoft's replacement for Control Panel.</span>
+          <span class="def-term">Control Panel</span><span class="def-val">Legacy interface still present for additional configuration tasks. Contains applets not yet migrated to Settings. Both interfaces may be needed for full configuration.</span>
+        </div>
+        <p class="mini-h">Key Settings Areas</p>
+        <div class="def-grid">
+          <span class="def-term">Accounts Settings</span><span class="def-val">Manage local accounts, Microsoft account linkage (for cloud sync), sign-in options, and account types (Administrator vs Standard).</span>
+          <span class="def-term">Privacy Settings</span><span class="def-val">Telemetry and diagnostics, app permissions (camera, microphone, location), activity history. Review these when hardening a workstation.</span>
+          <span class="def-term">Time & Language</span><span class="def-val">Date/time, time zone, region, and language settings. Important for Kerberos authentication — clock skew &gt;5 minutes causes authentication failures.</span>
+          <span class="def-term">Ease of Access</span><span class="def-val">Vision (high-contrast, Magnifier, Narrator), Hearing (volume, visual alerts, closed-captions), Interaction (keyboard, mouse, speech, eye control).</span>
+          <span class="def-term">Update & Security</span><span class="def-val">Windows Update (critical patches, optional updates, driver updates), Windows Security (Defender AV, Firewall), Activation (product key/license validation).</span>
+          <span class="def-term">Power Options</span><span class="def-val">Sleep, hibernate, shutdown. High Performance, Balanced, Power Saver plans. Fast Startup. Important for laptops and desktops in enterprise.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">File Explorer</div>
+        <div class="def-grid">
+          <span class="def-term">Navigation Pane</span><span class="def-val">Quick Access, OneDrive, This PC, Network, Recycle Bin. Hierarchical folder tree on left side.</span>
+          <span class="def-term">File Explorer Options</span><span class="def-val">Show/hide file extensions, hidden files, system files, and protected OS files. Critical for troubleshooting — enable "show hidden items" and "show file extensions."</span>
+          <span class="def-term">Indexing Options</span><span class="def-val">Manages which locations are indexed for fast search. Can add/remove indexed locations and configure indexing behavior.</span>
+          <span class="def-term">Key Folder Locations</span><span class="def-val"><code>C:\Windows</code> = OS files. <code>C:\Program Files</code> = 64-bit apps. <code>C:\Program Files (x86)</code> = 32-bit apps. <code>C:\Users\[name]</code> = user profile data.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Administrative Tool Shortcuts</div>
+        <div class="def-grid">
+          <span class="def-term"><code>compmgmt.msc</code></span><span class="def-val">Computer Management — default admin console. Contains Device Manager, Disk Management, Event Viewer, Local Users and Groups, Services, etc.</span>
+          <span class="def-term"><code>devmgmt.msc</code></span><span class="def-val">Device Manager directly.</span>
+          <span class="def-term"><code>diskmgmt.msc</code></span><span class="def-val">Disk Management — partition, format, initialize disks.</span>
+          <span class="def-term"><code>eventvwr.msc</code></span><span class="def-val">Event Viewer — view system, application, and security logs.</span>
+          <span class="def-term"><code>secpol.msc</code></span><span class="def-val">Local Security Policy — configure password policies, audit policies, user rights.</span>
+          <span class="def-term"><code>services.msc</code></span><span class="def-val">Services console — start, stop, enable, disable Windows services.</span>
+          <span class="def-term"><code>taskschd.msc</code></span><span class="def-val">Task Scheduler — automate tasks based on triggers (time, logon, events).</span>
+          <span class="def-term"><code>regedit.exe</code></span><span class="def-val">Registry Editor — view and edit Windows registry (five root hives: HKLM, HKCU, HKCR, HKU, HKCC). Incorrect edits = system instability.</span>
+          <span class="def-term"><code>msconfig.exe</code></span><span class="def-val">System Configuration Utility — manage startup mode, boot options, startup services. For troubleshooting startup issues.</span>
+          <span class="def-term"><code>msinfo32.exe</code></span><span class="def-val">System Information — comprehensive hardware/software report. Drivers, firmware, OS version, environment variables, network config.</span>
+          <span class="def-term"><code>resmon.exe</code></span><span class="def-val">Resource Monitor — advanced real-time monitoring beyond Task Manager. CPU, memory, disk, and network per-process detail.</span>
+          <span class="def-term"><code>perfmon.msc</code></span><span class="def-val">Performance Monitor — counter logs, trace logs, data collector sets for historical performance analysis.</span>
+          <span class="def-term"><code>cleanmgr.exe</code></span><span class="def-val">Disk Cleanup — removes temp files, old Windows installs, Recycle Bin contents to reclaim disk space.</span>
+          <span class="def-term"><code>dfrgui.exe</code></span><span class="def-val">Optimize Drives (Defragmenter) — defragments HDDs, TRIM operations for SSDs.</span>
+        </div>
+        <div class="callout callout-exam">Know the .msc and .exe file names — the exam asks which tool you would use for a given task. Run dialog (Win+R): type the filename to launch directly. Win+X opens a quick-access shortcut menu to many of these tools.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Application Installation</div>
+        <div class="def-grid">
+          <span class="def-term">System Requirements</span><span class="def-val">CPU architecture, minimum RAM, minimum storage, GPU requirements (for graphics-intensive apps), and external hardware tokens.</span>
+          <span class="def-term">OS Compatibility</span><span class="def-val">Match app to OS version. 64-bit apps require 64-bit OS and CPU. 32-bit apps run on both. Linux apps may need to be compiled if not available for the distro.</span>
+          <span class="def-term">Distribution Methods</span><span class="def-val">App stores (sandboxed, verified), physical media, downloadable installer (verify with digital signature or hash), ISO files (for complex apps or VMs).</span>
+          <span class="def-term">Digital Signatures</span><span class="def-val">Windows verifies digital signature of installers. Confirms authenticity and integrity. Use <code>certutil</code> to calculate and verify file hashes.</span>
+          <span class="def-term">Windows Subsystem for Linux (WSL)</span><span class="def-val">Enables running Linux distributions and applications directly on Windows. Enables Bash shell, Linux tools, and development environments without dual-boot.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Cloud-Based Applications</div>
+        <div class="def-grid">
+          <span class="def-term">Cloud Email</span><span class="def-val">Microsoft 365 Outlook Web, Google Workspace Gmail. Access from any device, automatic sync, centralized management.</span>
+          <span class="def-term">Cloud Storage</span><span class="def-val">OneDrive, Google Drive, iCloud. Access files from any internet-connected device. Sync can be paused to manage bandwidth costs.</span>
+          <span class="def-term">Collaboration Tools</span><span class="def-val">Real-time document editing (Google Docs, Microsoft 365), videoconferencing (Teams, Zoom), instant messaging. May need permission adjustments for camera/mic access.</span>
+          <span class="def-term">Identity Synchronization</span><span class="def-val">Single set of credentials for cloud and on-premises resources. Consistent permissions across environments. Managed via Microsoft Entra (formerly Azure AD) or similar. Reduces administrative burden.</span>
+          <span class="def-term">Licensing</span><span class="def-val">Cloud apps have license terms just like local software. Violating terms leads to compliance penalties. Manage assignments via admin portals.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ MODULE 13 – MANAGING WINDOWS ═══ -->
+  <section class="chapter" id="m13">
+    <div class="chapter-header"><span class="chapter-num">MOD 13</span><h2 class="chapter-title">Managing Windows</h2><span class="chapter-obj">Obj 1.4 · 1.5 · 1.7</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Management Consoles</div>
+        <div class="def-grid">
+          <span class="def-term">Local Users and Groups</span><span class="def-val">Create and manage user accounts, reset passwords, assign group memberships. Built-in groups: Administrators (full control), Users (standard), Guests (legacy only), Power Users (legacy app support).</span>
+          <span class="def-term">Disk Management</span><span class="def-val">Initialize new disks (MBR or GPT), create/delete/format partitions, manage volumes. System, boot, and recovery volumes are critical for OS function. Storage Spaces replaces dynamic disks for software RAID.</span>
+          <span class="def-term">Device Manager</span><span class="def-val">View all hardware devices. Update, roll back, disable, or uninstall drivers. Check for device errors (yellow !) . Update drivers via Windows Update or manufacturer website.</span>
+          <span class="def-term">Group Policy Editor</span><span class="def-val">Configure Windows and third-party software settings without editing registry directly. Each setting can be Enabled, Disabled, or Not Configured. Apply policies across computers on a domain.</span>
+          <span class="def-term">Certificate Manager</span><span class="def-val">View, request, or import digital certificates. Key subfolders: Personal, Trusted Root CAs, Third-Party Root CAs. Removing a CA cert = browser/app no longer trusts certs it signed.</span>
+          <span class="def-term">Task Scheduler</span><span class="def-val">Trigger-based automation. Triggers: time, user logon, system events, machine wake. Multiple actions per task. All activity logged for auditing.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Command-Line Tools</div>
+        <p class="mini-h">Navigation & File Management</p>
+        <div class="def-grid">
+          <span class="def-term"><code>dir</code></span><span class="def-val">List files and directories. Switches: /a (hidden), /s (subdirectories), /o:n (sort by name), /o:s (sort by size), /o:d (sort by date).</span>
+          <span class="def-term"><code>cd</code></span><span class="def-val">Change directory. <code>cd ..</code> = up one level. <code>cd \</code> = root. <code>cd path</code> = navigate to path.</span>
+          <span class="def-term"><code>copy</code> / <code>move</code></span><span class="def-val">Copy or move files. Syntax: <code>copy Source Destination</code>.</span>
+          <span class="def-term"><code>robocopy</code></span><span class="def-val">Robust file copy — handles retries, can copy directory structure, ACLs, timestamps. Switches: /S (subdirs), /E (empty dirs), /xf (exclude files).</span>
+          <span class="def-term"><code>md</code> / <code>rd</code></span><span class="def-val">Make directory / Remove directory. <code>rd /s /q</code> removes directory and all contents without prompting.</span>
+          <span class="def-term"><code>del</code></span><span class="def-val">Delete files. Does not move to Recycle Bin — permanent deletion.</span>
+        </div>
+        <p class="mini-h">Disk & System Management</p>
+        <div class="def-grid">
+          <span class="def-term"><code>diskpart</code></span><span class="def-val">Advanced disk and partition management CLI. Commands: list disk, select disk, create partition, format, assign letter. More powerful than Disk Management GUI.</span>
+          <span class="def-term"><code>format</code></span><span class="def-val">Create a new file system on a drive, erasing all data. Specify file system: <code>format C: /fs:NTFS</code>.</span>
+          <span class="def-term"><code>chkdsk</code></span><span class="def-val">Check disk for file system errors and bad sectors. <code>/f</code> = fix errors, <code>/r</code> = recover bad sectors (requires reboot if drive is in use).</span>
+          <span class="def-term"><code>sfc /scannow</code></span><span class="def-val">System File Checker. Scans for and repairs corrupted Windows system files. Run from elevated command prompt.</span>
+          <span class="def-term"><code>shutdown</code></span><span class="def-val"><code>/s</code> = shutdown, <code>/r</code> = restart, <code>/h</code> = hibernate, <code>/l</code> = log off. <code>/t 0</code> = immediately.</span>
+          <span class="def-term"><code>net user</code></span><span class="def-val">Manage user accounts from CLI. Create user, reset password, force password change at next login. Example: <code>net user username password /add</code>.</span>
+          <span class="def-term"><code>gpupdate</code></span><span class="def-val">Force Group Policy refresh without waiting for next automatic update interval.</span>
+          <span class="def-term"><code>gpresult</code></span><span class="def-val">Display applied Group Policy settings for the current user and computer. Useful for troubleshooting GPO issues.</span>
+          <span class="def-term"><code>regsrv32</code></span><span class="def-val">Register or unregister DLL files. Used when application services fail to start due to missing registered components.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Windows Networking Configuration</div>
+        <div class="def-grid">
+          <span class="def-term">Network Adapter Config</span><span class="def-val">Settings → Network & Internet, or <code>ncpa.cpl</code> (Network Connections). Set static IP or DHCP, DNS servers, gateway. Right-click adapter → Properties → IPv4.</span>
+          <span class="def-term">Network Profiles</span><span class="def-val">Private (home/work) = discoverable, file sharing enabled. Public = not discoverable, more restrictive firewall. Domain = managed by Group Policy.</span>
+          <span class="def-term">UNC Path</span><span class="def-val">Universal Naming Convention. Format: <code>\\ServerName\ShareName</code>. Used to access shared resources. Network Discovery must be enabled on Private profile.</span>
+          <span class="def-term">VPN Configuration</span><span class="def-val">Settings → Network & Internet → VPN. Add VPN connection (built-in client) or use third-party client software.</span>
+          <span class="def-term">WWAN</span><span class="def-val">Wireless Wide Area Network. Uses cellular network (3G/4G/5G) via USB adapter or internal module with SIM card. Backup or primary connection for mobile/remote users.</span>
+          <span class="def-term">Proxy Settings</span><span class="def-val">Settings → Network & Internet → Proxy. Configure manually or via auto-detect. Proxy caches content and forwards requests. Transparent proxies require no client configuration.</span>
+          <span class="def-term">Windows Defender Firewall</span><span class="def-val">Host-based firewall. Configured via Settings or <code>wf.msc</code> (advanced). Add exceptions for specific apps, ports, or addresses. Domain, Private, and Public profiles each have independent rules.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ MODULE 14 – SUPPORTING WINDOWS ═══ -->
+  <section class="chapter" id="m14">
+    <div class="chapter-header"><span class="chapter-num">MOD 14</span><h2 class="chapter-title">Supporting Windows</h2><span class="chapter-obj">Obj 1.5 · 3.1 · 4.9</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Network Troubleshooting Commands</div>
+        <div class="def-grid">
+          <span class="def-term"><code>ipconfig /all</code></span><span class="def-val">Full IP configuration: IP address, subnet mask, gateway, MAC address, DNS servers, DHCP server, lease info. First step in network troubleshooting.</span>
+          <span class="def-term"><code>ipconfig /release</code></span><span class="def-val">Release current DHCP lease.</span>
+          <span class="def-term"><code>ipconfig /renew</code></span><span class="def-val">Request new DHCP lease.</span>
+          <span class="def-term"><code>ipconfig /flushdns</code></span><span class="def-val">Clear local DNS resolver cache. Use when DNS changes aren't resolving.</span>
+          <span class="def-term"><code>ping</code></span><span class="def-val">Test ICMP connectivity. Sequential ping test: 127.0.0.1 (loopback → TCP/IP stack) → own IP (NIC) → gateway (local routing) → remote IP (WAN routing) → hostname (DNS).</span>
+          <span class="def-term"><code>tracert</code></span><span class="def-val">Trace route to destination. Shows each hop and round-trip time. Identifies where connectivity fails along the path.</span>
+          <span class="def-term"><code>nslookup</code></span><span class="def-val">DNS query tool. Resolves hostnames to IPs and vice versa. If you can ping by IP but not hostname — DNS problem. Use nslookup to diagnose.</span>
+          <span class="def-term"><code>netstat</code></span><span class="def-val">Shows active connections and listening ports. Switches: <code>-a</code> (include UDP), <code>-b</code> (show owning process), <code>-n</code> (numeric addresses), <code>-e</code> (Ethernet stats), <code>-s</code> (per-protocol stats).</span>
+        </div>
+        <div class="callout callout-exam">Can ping IP but not hostname = DNS issue. Can ping gateway but not remote IP = routing/ISP issue. Cannot ping gateway = local network issue. Cannot ping 127.0.0.1 = TCP/IP stack is broken.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Remote Access Technologies</div>
+        <div class="def-grid">
+          <span class="def-term">RDP (Remote Desktop Protocol)</span><span class="def-val">Port 3389. Full graphical remote access. Not enabled by default — enable via Settings → System → Remote Desktop. Configure permitted users. NLA (Network Level Authentication) should be required. Requires Pro or higher.</span>
+          <span class="def-term">Microsoft Remote Assistance</span><span class="def-val">User sends invitation file with passcode to helper. Helper connects over RDP with chat feature. Can request control of user's desktop. Requires user consent.</span>
+          <span class="def-term">WinRM</span><span class="def-val">Windows Remote Management. Command-based management over HTTP/HTTPS (SOAP). Used for remote scripting and management. Does NOT provide a graphical interface — that's RDP. Compare: WinRM = CLI management, RDP = graphical control.</span>
+          <span class="def-term">SSH</span><span class="def-val">Secure Shell. Port 22. Encrypted command-line remote access. Two auth methods: password or public key. Host fingerprint verifies trusted server on first connection.</span>
+          <span class="def-term">VNC</span><span class="def-val">Virtual Network Computing. Cross-platform GUI remote access. Uses RFB protocol. Open-source alternative to RDP. Less secure by default — use with encryption.</span>
+          <span class="def-term">RMM</span><span class="def-val">Remote Monitoring and Management. Agent-based. Provides inventory, monitoring, automated patching, endpoint detection, remote network boot. Enterprise MSP tool.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Performance & Troubleshooting Tools</div>
+        <div class="def-grid">
+          <span class="def-term">Task Manager</span><span class="def-val">Open: Ctrl+Shift+Esc. Tabs: Processes (CPU/RAM/disk/network per process), Performance (real-time graphs), App History (Store app usage), Startup (disable startup items), Users (per-user resource use), Details, Services.</span>
+          <span class="def-term">Event Viewer</span><span class="def-val">Logs: System, Application, Security, Setup. Severity levels: Critical, Error, Warning, Information, Audit Success/Failure. Use to investigate BSODs, service failures, and security events.</span>
+          <span class="def-term">Resource Monitor</span><span class="def-val">Advanced snapshot monitoring beyond Task Manager. Per-process detail for CPU, memory, disk, and network. Good for identifying resource hogs and blocking processes.</span>
+          <span class="def-term">Performance Monitor</span><span class="def-val">Counter logs and trace logs for historical performance analysis. Monitor: CPU %, Memory (Available MB), Disk (Avg Queue Length), Network (% Utilization). Used for capacity planning.</span>
+          <span class="def-term">System Configuration (msconfig)</span><span class="def-val">Tabs: General (startup mode), Boot (BCD settings, Safe Boot options), Services (startup services), Startup (links to Task Manager), Tools (shortcuts to admin utilities).</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Windows Boot Process & Recovery</div>
+        <p class="mini-h">Boot Sequence</p>
+        <div class="ts-steps">
+          <div class="ts-step">Power on → POST (tests CPU, RAM, video, storage).</div>
+          <div class="ts-step">Firmware (BIOS or UEFI) identifies boot device and passes control to the bootloader.</div>
+          <div class="ts-step">BIOS: reads MBR → boot sector → boot manager reads BCD file. UEFI: reads GPT → UEFI boot manager reads BCD.</div>
+          <div class="ts-step">Windows Boot Manager loads Windows Boot Loader (winload.exe), which loads the kernel.</div>
+          <div class="ts-step">Kernel initializes, loads drivers, starts Session Manager (smss.exe) → Windows subsystems → Login screen.</div>
+        </div>
+        <p class="mini-h">Boot Recovery Tools</p>
+        <div class="def-grid">
+          <span class="def-term">Advanced Boot Options</span><span class="def-val">BIOS: press F8 during boot. UEFI: hold Shift and Restart. Win11: Settings → System → Recovery → Advanced startup → Restart Now.</span>
+          <span class="def-term">Safe Mode</span><span class="def-val">Loads minimal drivers and services. Use to troubleshoot driver issues, malware, and startup problems. Safe Mode with Networking adds network support.</span>
+          <span class="def-term">WinRE (Windows Recovery Environment)</span><span class="def-val">Recovery tools: Startup Repair, System Restore, System Image Recovery, Command Prompt, Reset this PC. Access from boot options or recovery partition.</span>
+          <span class="def-term">System Restore</span><span class="def-val">Rolls back system configuration changes without affecting user files. Uses restore points. Enable via System Protection tab. Cannot undo if restore point doesn't exist.</span>
+          <span class="def-term">Driver/Update Rollback</span><span class="def-val">Device Manager → Driver tab → Roll Back Driver. Windows Update → View update history → Uninstall updates.</span>
+          <span class="def-term">Reset this PC</span><span class="def-val">Keep my files (reinstalls Windows, removes apps) or Remove everything (full wipe + reinstall). Last resort before full reimage.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Common Windows Troubleshooting</div>
+        <div class="def-grid">
+          <span class="def-term">BSOD (Blue Screen of Death)</span><span class="def-val">Kernel crash. Note stop error code. Check recent hardware/driver changes. Remove new hardware, check seating, run memory diagnostics, check for overheating.</span>
+          <span class="def-term">Slow Boot</span><span class="def-val">Enable verbose status messages. Disable startup items in Task Manager. Check services. May be GPO delays or profile loading issues.</span>
+          <span class="def-term">Slow Performance</span><span class="def-val">Task Manager → find process at 90–100% CPU/RAM/disk. Kill or restart. If disk full → Disk Cleanup. Low RAM → close apps or add RAM. If not resource issue → apply updates, defrag HDD, disable startup items, malware scan.</span>
+          <span class="def-term">Application Crashing</span><span class="def-val">Preserve data first. Check Event Viewer for application errors. Try reinstalling the application. Use <code>regsvr32</code> to re-register DLL components.</span>
+          <span class="def-term">Services Not Starting</span><span class="def-val">Check if disabled. Check dependencies (a required service may be stopped). Verify sufficient privilege to start. Run <code>sfc /scannow</code> if core Windows services affected.</span>
+          <span class="def-term">Time Drift</span><span class="def-val">System clock desynced. Kerberos fails with &gt;5 minute skew. Sync with NTP server (port 123). Check CMOS battery if clock resets after power off.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ MODULE 15 – SECURING WINDOWS ═══ -->
+  <section class="chapter" id="m15">
+    <div class="chapter-header"><span class="chapter-num">MOD 15</span><h2 class="chapter-title">Securing Windows</h2><span class="chapter-obj">Obj 2.1 · 2.2 · 1.7</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Logical Security Concepts</div>
+        <div class="def-grid">
+          <span class="def-term">CIA Triad</span><span class="def-val">Confidentiality (access controls, encryption), Integrity (hashing, digital signatures), Availability (redundancy, backups). Foundation of all security decisions.</span>
+          <span class="def-term">Least Privilege</span><span class="def-val">Users and processes receive only the minimum permissions needed for their function. Nothing more. Reduces blast radius of compromised accounts.</span>
+          <span class="def-term">Implicit Deny</span><span class="def-val">Default state is deny. Access must be explicitly granted. If no rule permits an action, it is blocked. Basis of ACL design.</span>
+          <span class="def-term">Access Control Lists (ACLs)</span><span class="def-val">List of permissions associated with a resource. Each entry is an ACE (Access Control Entry) defining what a principal (user or group) can do.</span>
+          <span class="def-term">UAC (User Account Control)</span><span class="def-val">Prompts for elevation before allowing admin-level changes. Standard users get credential prompt (enter admin password). Admins get consent prompt. Prevents silent privilege escalation. Implements JIT (Just-In-Time) access principles.</span>
+          <span class="def-term">PAM (Privileged Access Management)</span><span class="def-val">Controls, monitors, and secures access to privileged accounts. Logs and audits all privileged activity. Enforces separation of duties.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Windows Authentication Methods</div>
+        <div class="def-grid">
+          <span class="def-term">Username & Password</span><span class="def-val">Basic authentication. Subject to phishing, brute force, and credential theft. Should be combined with MFA.</span>
+          <span class="def-term">Windows Hello</span><span class="def-val">Modern authentication options: PIN (something you know, stored locally and device-bound), Fingerprint (something you are), Facial recognition via IR camera (something you are), Security key (something you have).</span>
+          <span class="def-term">MFA</span><span class="def-val">Two or more factors from different categories: something you know (password/PIN), something you have (smart card, token, phone), something you are (biometric). 2-step verification uses a soft token (authenticator app).</span>
+          <span class="def-term">TOTP</span><span class="def-val">Time-Based One-Time Password. Changes every 30 seconds. Google Authenticator, Microsoft Authenticator. Requires time sync between client and server.</span>
+          <span class="def-term">HOTP</span><span class="def-val">HMAC-Based One-Time Password. Counter-based. Valid until used. Physical tokens often use HOTP.</span>
+          <span class="def-term">SSO with SAML</span><span class="def-val">Single Sign-On using Security Assertions Markup Language. One authentication grants access to multiple systems. Reduces password fatigue.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Active Directory & Group Policy</div>
+        <div class="def-grid">
+          <span class="def-term">Domain Controller (DC)</span><span class="def-val">Hosts Active Directory. Authenticates users and computers. Enforces Group Policy. Must have at least two DCs for redundancy.</span>
+          <span class="def-term">Member Server</span><span class="def-val">Joined to domain but not a DC. Provides file/print/application services. Under control of domain administrators.</span>
+          <span class="def-term">Organizational Units (OUs)</span><span class="def-val">Containers in AD that group objects (users, computers, groups) for management. GPOs can be applied to OUs to configure settings for all members.</span>
+          <span class="def-term">Security Groups</span><span class="def-val">Assign permissions to groups, then add users. Much easier to manage than per-user permissions. Types: Domain Local, Global, Universal.</span>
+          <span class="def-term">Group Policy Objects (GPOs)</span><span class="def-val">Apply configuration settings to users and computers in the domain. Control security settings, software deployment, login scripts, desktop configuration. Applied: Local → Site → Domain → OU (LSDOU). Last applied wins.</span>
+          <span class="def-term">Login Scripts</span><span class="def-val">Scripts that run at logon. Map network drives, install printers, apply settings. Assigned via GPO or user account properties.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">NTFS vs Share Permissions</div>
+        <div class="def-grid">
+          <span class="def-term">NTFS Permissions</span><span class="def-val">Apply both locally AND over the network. More granular. Full Control, Modify, Read &amp; Execute, List Folder Contents, Read, Write. Applied at folder and individual file level. Inherited from parent by default.</span>
+          <span class="def-term">Share Permissions</span><span class="def-val">Apply ONLY when accessed over the network. Three options: Full Control, Change, Read. Less granular than NTFS.</span>
+          <span class="def-term">Effective Permissions</span><span class="def-val">When both apply (network access), the MORE RESTRICTIVE of the two wins. NTFS=Modify + Share=Read → Effective=Read over network. Locally: only NTFS applies (no share permissions).</span>
+          <span class="def-term">Explicit Deny</span><span class="def-val">Overrides any Allow permission. Even if a user is in a group that has Allow, an explicit Deny on the user or another group beats it.</span>
+          <span class="def-term">Inheritance</span><span class="def-val">NTFS permissions flow from parent to child folders/files by default. Can be blocked at any point to create isolated permission sets.</span>
+        </div>
+        <div class="callout callout-exam">NTFS permissions always apply — locally and over the network. Share permissions only apply over the network. When both are in effect, the most restrictive combination wins. Explicit Deny beats Explicit Allow every time.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Home Folders, Roaming Profiles & Folder Redirection</div>
+        <div class="def-grid">
+          <span class="def-term">Home Folder</span><span class="def-val">Private mapped network drive for user personal files. Configured in AD user account properties. Data stored on file server, not local PC — enables centralized backup.</span>
+          <span class="def-term">Roaming Profile</span><span class="def-val">User profile stored on a server. Follows the user to any domain-joined computer. Downloads on login, uploads on logout. Large profiles = slow login/logout.</span>
+          <span class="def-term">Folder Redirection</span><span class="def-val">GPO-based. Redirects specific folders (Documents, Desktop, AppData) to a network location. Transparent to user. Combined with offline files for laptop users.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ MODULE 16 – INSTALLING OPERATING SYSTEMS ═══ -->
+  <section class="chapter" id="m16">
+    <div class="chapter-header"><span class="chapter-num">MOD 16</span><h2 class="chapter-title">Installing Operating Systems</h2><span class="chapter-obj">Obj 1.2 · 1.3</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Windows Editions</div>
+        <table class="data-table">
+          <thead><tr><th>Edition</th><th>Key Features</th><th>Max RAM (64-bit)</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td><span class="hl-gold">Home</span></td><td>Basic features. No domain join, no Group Policy, no BitLocker, no RDP host.</td><td>128 GB</td><td>OEM or retail license. Consumer only.</td></tr>
+            <tr><td><span class="hl-gold">Pro</span></td><td>Domain join, Group Policy Editor, BitLocker, RDP host, Hyper-V, Windows Sandbox.</td><td>2 TB</td><td>Business standard. Most common in enterprise desktops.</td></tr>
+            <tr><td><span class="hl-gold">Enterprise</span></td><td>All Pro features + DirectAccess, AppLocker, Credential Guard, App-V, BranchCache.</td><td>2 TB</td><td>Volume license only. Largest organizations.</td></tr>
+            <tr><td><span class="hl-gold">Education</span></td><td>Based on Enterprise. For educational institutions.</td><td>2 TB</td><td>Requires institutional agreement.</td></tr>
+          </tbody>
+        </table>
+        <div class="callout callout-exam">If a feature requires Group Policy, BitLocker, RDP, or domain join — the answer is Windows Pro or higher. Windows Home does NOT support these features. This distinction is heavily tested.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">32-bit vs 64-bit</div>
+        <div class="def-grid">
+          <span class="def-term">32-bit CPU</span><span class="def-val">Only runs 32-bit OS editions. Maximum 4 GB RAM addressable. Cannot run 64-bit software.</span>
+          <span class="def-term">64-bit CPU</span><span class="def-val">Runs both 32-bit and 64-bit OS. Supports vastly more RAM. 64-bit apps run faster on 64-bit OS. Modern standard.</span>
+          <span class="def-term">N Editions</span><span class="def-val">EU-specific editions that exclude Windows Media Player and related technologies to comply with EU regulations. Home N, Pro N, etc.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Installation Types</div>
+        <div class="def-grid">
+          <span class="def-term">Clean Install</span><span class="def-val">Wipes the target drive and installs a fresh OS. No settings or apps carried over. Best for troubleshooting or new hardware. Custom (advanced) install option in setup.</span>
+          <span class="def-term">In-Place Upgrade</span><span class="def-val">Installs new OS version over existing. Preserves apps, settings, and user data. Requires compatible source OS version. Slower but less disruptive.</span>
+          <span class="def-term">Unattended / Answer File</span><span class="def-val">Automated install using an XML answer file (<code>unattend.xml</code>). Provides answers to all setup prompts without human interaction. Used for mass deployments.</span>
+          <span class="def-term">Network-Based / PXE</span><span class="def-val">Boot from network via DHCP + TFTP. Downloads OS image from deployment server. Requires no physical media. Scales to hundreds of machines simultaneously.</span>
+          <span class="def-term">Multiboot</span><span class="def-val">Multiple OSes installed on one computer. Each OS requires its own partition. Boot menu appears at startup to select OS. Consider partition layout carefully before setup.</span>
+          <span class="def-term">Repair Install</span><span class="def-val">Reinstalls Windows while preserving user data and apps. Used when OS files are corrupted. Run from installation media, choose "Repair your computer."</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Windows 11 Requirements</div>
+        <ul class="concept-list">
+          <li><strong>TPM 2.0</strong> — Required. Must be enabled in BIOS/UEFI.</li>
+          <li><strong>UEFI with Secure Boot</strong> — Required. Legacy BIOS is not supported.</li>
+          <li><strong>Supported CPU</strong> — Intel 8th gen+ or AMD Ryzen 2000+. Some older CPUs blocked.</li>
+          <li><strong>64-bit only</strong> — No 32-bit edition of Windows 11.</li>
+          <li><strong>RAM</strong> — 4 GB minimum.</li>
+          <li><strong>Storage</strong> — 64 GB minimum.</li>
+          <li><strong>Display</strong> — 720p minimum, 9" diagonal or greater.</li>
+        </ul>
+        <div class="callout callout-exam">TPM 2.0 + UEFI Secure Boot = hard requirements for Windows 11. If upgrading from Win10 and the check fails, most commonly TPM is disabled in BIOS or Secure Boot is disabled. Enable both in UEFI settings.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Disk Configuration</div>
+        <div class="def-grid">
+          <span class="def-term">MBR (Master Boot Record)</span><span class="def-val">Legacy partitioning. Max 4 primary partitions. Max 2.2 TB per disk. Used with BIOS boot. Cannot use GPT features.</span>
+          <span class="def-term">GPT (GUID Partition Table)</span><span class="def-val">Modern standard. Max 128 partitions (Windows). No practical disk size limit. Required for UEFI boot and disks &gt;2.2 TB.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ MODULE 17 – SUPPORTING OTHER OS ═══ -->
+  <section class="chapter" id="m17">
+    <div class="chapter-header"><span class="chapter-num">MOD 17</span><h2 class="chapter-title">Supporting Other Operating Systems</h2><span class="chapter-obj">Obj 1.8 · 1.9</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Linux Command Line</div>
+        <p class="mini-h">Navigation & File Management</p>
+        <div class="def-grid">
+          <span class="def-term"><code>ls</code></span><span class="def-val">List directory contents. <code>ls -la</code> shows all files including hidden, with permissions and details.</span>
+          <span class="def-term"><code>cd</code></span><span class="def-val">Change directory. <code>cd ~</code> = home directory. <code>cd /</code> = root. <code>cd ..</code> = up one level.</span>
+          <span class="def-term"><code>pwd</code></span><span class="def-val">Print working directory. Shows current path.</span>
+          <span class="def-term"><code>cp</code></span><span class="def-val">Copy files or directories. <code>cp -r</code> for directories (recursive).</span>
+          <span class="def-term"><code>mv</code></span><span class="def-val">Move or rename files/directories.</span>
+          <span class="def-term"><code>rm</code></span><span class="def-val">Delete files. <code>rm -r</code> = delete directory and all contents. <strong>No Recycle Bin — permanent.</strong></span>
+          <span class="def-term"><code>mkdir</code> / <code>rmdir</code></span><span class="def-val">Create / remove empty directory.</span>
+          <span class="def-term"><code>df -h</code></span><span class="def-val">Show disk free space in human-readable format.</span>
+          <span class="def-term"><code>du -sh</code></span><span class="def-val">Show disk usage of a specific directory.</span>
+          <span class="def-term"><code>cat</code> / <code>less</code></span><span class="def-val">Display file contents. <code>less</code> allows scrolling.</span>
+          <span class="def-term"><code>grep</code></span><span class="def-val">Search for patterns in files. <code>grep "error" /var/log/syslog</code> finds error lines in the syslog.</span>
+          <span class="def-term"><code>find</code></span><span class="def-val">Search for files. <code>find /home -name "*.txt"</code></span>
+          <span class="def-term"><code>mount</code> / <code>umount</code></span><span class="def-val">Mount or unmount filesystems. <code>/etc/fstab</code> defines filesystems to mount automatically at boot.</span>
+        </div>
+        <p class="mini-h">User & Permission Management</p>
+        <div class="def-grid">
+          <span class="def-term"><code>sudo</code></span><span class="def-val">Run command with superuser (root) privileges. Logs the command. Preferred over <code>su</code> for security.</span>
+          <span class="def-term"><code>su</code></span><span class="def-val">Switch user. <code>su -</code> switches to root with root's environment.</span>
+          <span class="def-term"><code>chmod</code></span><span class="def-val">Change file permissions. Symbolic: <code>chmod u+x file</code>. Numeric (octal): <code>chmod 755 file</code>. Owner only can change. Read=4, Write=2, Execute=1.</span>
+          <span class="def-term"><code>chown</code></span><span class="def-val">Change file ownership. Requires superuser. <code>chown user:group file</code>.</span>
+          <span class="def-term">Permission Format</span><span class="def-val"><code>rwxr-xr--</code> = Owner(rwx) Group(r-x) Other(r--). Each set: r=read(4), w=write(2), x=execute(1). Octal: 754.</span>
+        </div>
+        <div class="callout callout-exam">Linux permission octal: 7=rwx, 6=rw-, 5=r-x, 4=r--, 0=---. chmod 755 = Owner rwx, Group r-x, Other r-x. Common: 644 (files) and 755 (directories/executables). Only the file owner or root can change permissions with chmod.</div>
+        <p class="mini-h">Package Management</p>
+        <div class="def-grid">
+          <span class="def-term">APT (Debian/Ubuntu)</span><span class="def-val"><code>apt update</code> → <code>apt upgrade</code> → <code>apt install package</code> → <code>apt remove package</code>. Package files: .deb</span>
+          <span class="def-term">DNF (RHEL/Fedora/CentOS)</span><span class="def-val"><code>dnf check-update</code> → <code>dnf upgrade</code> → <code>dnf install package</code> → <code>dnf remove package</code>. Package files: .rpm</span>
+        </div>
+        <p class="mini-h">Network & Process Commands</p>
+        <div class="def-grid">
+          <span class="def-term"><code>ping</code></span><span class="def-val">Test connectivity. Ctrl+C to stop (Linux ping runs continuously by default).</span>
+          <span class="def-term"><code>traceroute</code></span><span class="def-val">Linux equivalent of Windows <code>tracert</code>. Traces path to destination.</span>
+          <span class="def-term"><code>dig</code></span><span class="def-val">DNS query tool. More detailed than nslookup. <code>dig google.com MX</code> queries MX records.</span>
+          <span class="def-term"><code>curl</code></span><span class="def-val">Transfer data via URLs. Tests APIs. Downloads files. Supports HTTP, HTTPS, FTP.</span>
+          <span class="def-term"><code>ps aux</code></span><span class="def-val">Show all running processes with details.</span>
+          <span class="def-term"><code>top</code> / <code>htop</code></span><span class="def-val">Real-time process monitor (similar to Windows Task Manager).</span>
+          <span class="def-term"><code>kill</code></span><span class="def-val">Terminate a process by PID. <code>kill -9 PID</code> = force kill.</span>
+          <span class="def-term"><code>crontab -e</code></span><span class="def-val">Edit scheduled tasks (cron jobs). Format: minute hour day month weekday command. Cron runs every minute, checks all user crontabs.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">macOS Features</div>
+        <div class="def-grid">
+          <span class="def-term">Interface</span><span class="def-val">Menu bar (top of screen), Dock (bottom — quick app/file access), Mission Control (F3 or gestures — manage windows and desktops), Spotlight (Cmd+Space — system-wide search).</span>
+          <span class="def-term">Terminal / Shell</span><span class="def-val">macOS uses Zsh (Z shell) by default in modern versions. Bash was default before macOS Catalina. Access via Applications → Utilities → Terminal.</span>
+          <span class="def-term">System Folders</span><span class="def-val"><code>/System</code> = OS files (protected, do not modify). <code>/Library</code> = system-wide app resources. <code>~/Library</code> = per-user app data. <code>/Applications</code> = installed apps.</span>
+          <span class="def-term">Finder</span><span class="def-val">macOS file manager equivalent to Windows File Explorer. Access iCloud Drive, local files, network shares.</span>
+          <span class="def-term">System Settings</span><span class="def-val">Settings → System Settings (macOS Ventura+). Configure users, security, network, displays, sound, peripherals, privacy.</span>
+          <span class="def-term">Time Machine</span><span class="def-val">Automatic backup to APFS or HFS+ drives. Hourly backups (last 24 hours), daily (last month), weekly (earlier). Oldest deleted when drive full. Can restore individual files or entire system.</span>
+          <span class="def-term">FileVault</span><span class="def-val">macOS full-disk encryption. Requires iCloud or recovery key. Encrypts entire startup drive using XTS-AES-128.</span>
+          <span class="def-term">iCloud & Continuity</span><span class="def-val">Link Apple ID to macOS for iCloud sync (files, photos, keychain). Continuity features: Handoff (pass tasks between devices), AirDrop, Universal Clipboard.</span>
+          <span class="def-term">App Installation</span><span class="def-val">App Store (sandboxed, verified) or .dmg files (drag to Applications). Gatekeeper validates apps are signed by identified developers. Notarization provides additional validation.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ MODULE 18 – SOHO NETWORK SECURITY ═══ -->
+  <section class="chapter" id="m18">
+    <div class="chapter-header"><span class="chapter-num">MOD 18</span><h2 class="chapter-title">Configuring SOHO Network Security</h2><span class="chapter-obj">Obj 2.3 · 2.5 · 2.10 · 2.1</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Social Engineering & Common Attacks</div>
+        <div class="def-grid">
+          <span class="def-term">Phishing</span><span class="def-val">Mass email attack using spoofed senders, fake websites, or malicious attachments. Tricks victims into revealing credentials or downloading malware.</span>
+          <span class="def-term">Spear Phishing</span><span class="def-val">Targeted phishing using personal details to appear legitimate. Higher success rate than generic phishing.</span>
+          <span class="def-term">Whaling</span><span class="def-val">Spear phishing targeting executives (CEO, CFO). Often requests wire transfers or confidential data.</span>
+          <span class="def-term">Vishing</span><span class="def-val">Voice phishing via phone call. May use AI-generated voices to impersonate executives or support staff.</span>
+          <span class="def-term">Smishing</span><span class="def-val">SMS phishing. Text messages containing malicious links.</span>
+          <span class="def-term">Quishing</span><span class="def-val">QR code phishing. Malicious QR codes redirect victims to fake login pages or download malware.</span>
+          <span class="def-term">Evil Twin</span><span class="def-val">Rogue Wi-Fi access point broadcasting same SSID as legitimate network. Victims connect unknowingly. Enables credential harvesting and MITM attacks.</span>
+          <span class="def-term">SQL Injection</span><span class="def-val">Injects malicious SQL into input fields processed by a database. Can read, modify, or delete data. Prevent with parameterized queries, input sanitization, and stored procedures.</span>
+          <span class="def-term">Cross-Site Scripting (XSS)</span><span class="def-val">Injects malicious scripts into web pages viewed by other users. Steals cookies or executes code in victim's browser. Prevent with output encoding and input validation.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Wireless Security Protocols</div>
+        <table class="data-table">
+          <thead><tr><th>Protocol</th><th>Encryption</th><th>Auth</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td><span class="hl-gold">WEP</span></td><td>RC4 (40/128-bit)</td><td>Open / Shared</td><td><span class="bad">Broken. Never use. Crackable in minutes.</span></td></tr>
+            <tr><td><span class="hl-gold">WPA2-PSK</span></td><td>AES-CCMP</td><td>Pre-shared key + 4-way handshake</td><td><span class="neutral">Current standard. Handshake can be captured and cracked offline.</span></td></tr>
+            <tr><td><span class="hl-gold">WPA3-SAE</span></td><td>GCMP-128 / AES-CCMP</td><td>Simultaneous Auth of Equals (SAE)</td><td><span class="good">Strongest. Resistant to offline dictionary attacks. Perfect forward secrecy.</span></td></tr>
+          </tbody>
+        </table>
+        <p class="mini-h">Enterprise Authentication (802.1X)</p>
+        <div class="def-grid">
+          <span class="def-term">802.1X</span><span class="def-val">Port-based access control. Three roles: Supplicant (client), Authenticator (switch/AP), Authentication Server (RADIUS). Client cannot access network until RADIUS server approves credentials.</span>
+          <span class="def-term">EAP-TLS</span><span class="def-val">Most secure. Both client and server use certificates. Mutual authentication. Requires PKI infrastructure for client certificates.</span>
+          <span class="def-term">PEAP</span><span class="def-val">Protected EAP. Server certificate only. Username/password inside TLS tunnel. Easier to deploy than EAP-TLS.</span>
+          <span class="def-term">RADIUS</span><span class="def-val">AAA server for Wi-Fi and VPN. Forwards credentials via shared secret. Port 1812 (auth) / 1813 (accounting).</span>
+          <span class="def-term">TACACS+</span><span class="def-val">Cisco-preferred for device administration (router/switch CLI access). Encrypts entire session. Port 49. TCP.</span>
+          <span class="def-term">Kerberos</span><span class="def-val">Ticket-based SSO. Used in Active Directory. RADIUS/TACACS+ access points support Kerberos in domain environments.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">SOHO Router Security</div>
+        <div class="def-grid">
+          <span class="def-term">Change Default Credentials</span><span class="def-val">Default admin username/password is publicly known. Change immediately on first login. Strong, unique password.</span>
+          <span class="def-term">Firmware Updates</span><span class="def-val">Router firmware contains security vulnerabilities. Check manufacturer website or router admin interface regularly. Apply updates promptly.</span>
+          <span class="def-term">Inbound Filtering</span><span class="def-val">Blocks all inbound ports by default. Open specific ports via port forwarding only when needed. Never expose unnecessary services to the internet.</span>
+          <span class="def-term">Outbound Filtering</span><span class="def-val">Allows outbound connections by default. Restrict with content filters to block specific categories.</span>
+          <span class="def-term">Content Filtering</span><span class="def-val">Blocks malicious sites, URLs, and keywords. Parental controls can limit internet access times per device.</span>
+          <span class="def-term">Port Forwarding</span><span class="def-val">Maps an external port on the router's WAN IP to an internal device. Required for hosting services. Only forward what is needed.</span>
+          <span class="def-term">UPnP (Universal Plug and Play)</span><span class="def-val">Allows devices to automatically open ports. Convenience feature but significant security risk — disable UPnP if not needed for gaming consoles or VoIP only.</span>
+          <span class="def-term">Screened Subnet (DMZ)</span><span class="def-val">Isolated network segment for public-facing services. Separates internet-facing hosts from the internal LAN. In SOHO: router's DMZ host feature exposes one device to the internet.</span>
+          <span class="def-term">Wi-Fi Best Practices</span><span class="def-val">Use WPA3 or WPA2-AES. Disable WPS (Wi-Fi Protected Setup — known vulnerabilities). Change default SSID. Use a guest network for IoT devices and visitors. Disable SSID broadcast if needed.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Physical Security Controls</div>
+        <div class="def-grid">
+          <span class="def-term">Cable Lock</span><span class="def-val">Physically secures laptop to a desk via Kensington-style lock port. Deters opportunistic theft.</span>
+          <span class="def-term">Biometric Locks</span><span class="def-val">Door locks using fingerprint, retina, or facial recognition. "Something you are" — hardest to fake.</span>
+          <span class="def-term">Smart Card / Badge</span><span class="def-val">RFID-based access control. Logged entry/exit. Can be revoked remotely. "Something you have."</span>
+          <span class="def-term">Access Control Vestibule (Mantrap)</span><span class="def-val">Two-door airlock. Prevents tailgating. First door must close before second opens.</span>
+          <span class="def-term">RFID Asset Tags</span><span class="def-val">Track physical assets. Tagged items trigger alarms if removed without authorization.</span>
+          <span class="def-term">Cameras / Surveillance</span><span class="def-val">Deterrent and detective control. PTZ cameras for flexible coverage. Motion-triggered recording.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ MODULE 19 – MANAGING SECURITY SETTINGS ═══ -->
+  <section class="chapter" id="m19">
+    <div class="chapter-header"><span class="chapter-num">MOD 19</span><h2 class="chapter-title">Managing Security Settings</h2><span class="chapter-obj">Obj 2.2 · 2.4 · 2.6 · 2.7 · 2.11 · 3.4</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Account Security Hardening</div>
+        <div class="def-grid">
+          <span class="def-term">Password Best Practices</span><span class="def-val">12+ characters. Avoid personal info. Allow long passphrases. Don't require frequent expiration (NIST guidance). No deprecated complexity rules (special char every 90 days = outdated). Enable password managers.</span>
+          <span class="def-term">Change Default Admin Accounts</span><span class="def-val">Rename or disable the built-in Administrator account. Change all default passwords. Limit who knows admin credentials. Log and monitor all admin account usage.</span>
+          <span class="def-term">Disable Guest Account</span><span class="def-val">Disable unless required for specific use. Monitor guest Wi-Fi. Ensure compliance with security policies.</span>
+          <span class="def-term">Account Lockout Policy</span><span class="def-val">Lock account after X failed attempts (typically 3–5). Lockout duration or manual unlock. Prevents brute force attacks.</span>
+          <span class="def-term">Restrict Permissions</span><span class="def-val">Principle of least privilege. Standard accounts for daily use. Admin accounts only for admin tasks. Limit number of admin accounts.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Workstation Security Tools</div>
+        <div class="def-grid">
+          <span class="def-term">Windows Defender Antivirus</span><span class="def-val">Built-in AV. Uses signature-based and heuristic detection. Automatically replaced by third-party AV if installed. Real-time protection can be temporarily disabled (auto re-enables). Manage exclusions for false positives (VMs, etc.).</span>
+          <span class="def-term">Windows Defender Firewall</span><span class="def-val">Host-based firewall. Managed via Settings, Control Panel, or <code>wf.msc</code>. Configure rules by port, application, or address. Domain, Private, and Public profiles. Default: block inbound, allow outbound.</span>
+          <span class="def-term">EFS (Encrypting File System)</span><span class="def-val">File and folder encryption on NTFS volumes. Transparent to the encrypting user — files auto-decrypt on access. Only the encrypting user (and admin with recovery agent) can access. NOT available on Windows Home. Back up EFS certificate or risk permanent data loss.</span>
+          <span class="def-term">BitLocker</span><span class="def-val">Full volume encryption. Requires TPM 2.0 (preferred) or USB startup key. Requires Windows Pro or higher. BitLocker To Go = BitLocker for removable drives (USB). Recovery key must be backed up (AD, Microsoft account, or print).</span>
+          <span class="def-term">AutoRun/AutoPlay</span><span class="def-val">Legacy AutoRun auto-executed programs on inserted media — disable to prevent malware. Modern AutoPlay prompts user to choose action — safer but still review settings. Disable AutoRun completely via Group Policy.</span>
+          <span class="def-term">Execution Control</span><span class="def-val">Trusted vs untrusted software sources. Only install from vetted, signed sources. AppLocker (Enterprise) restricts which executables can run.</span>
+        </div>
+        <div class="callout callout-exam">EFS vs BitLocker: EFS = file/folder level, per-user, NTFS only, not available on Home. BitLocker = full disk/volume, TPM-based, requires Pro or higher. EFS protects files from other local users. BitLocker protects the whole drive if stolen. Both can be used together.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Browser Security</div>
+        <div class="def-grid">
+          <span class="def-term">Trusted Download Sources</span><span class="def-val">Download browsers from official vendor sites only. Verify with hash check (<code>certutil -hashfile filename SHA256</code>). Avoid third-party download sites — common source of bundled malware.</span>
+          <span class="def-term">Extensions & Plug-ins</span><span class="def-val">Install only from official browser stores. Disable unused extensions. Plug-ins (Flash, Java) largely replaced by HTML5. Each extension is a potential attack surface.</span>
+          <span class="def-term">HTTPS & Certificates</span><span class="def-val">Padlock icon = valid TLS certificate. Certificate validates identity of the server. CA (Certificate Authority) issues and signs certs. Enterprise: internal CA certs must be added to browsers.</span>
+          <span class="def-term">Private/Incognito Browsing</span><span class="def-val">Doesn't save browsing history, cookies, or form data locally. Does NOT make you anonymous online — ISP, employer, and websites can still see traffic. Does NOT prevent malware.</span>
+          <span class="def-term">Clear Cache / Browsing Data</span><span class="def-val">Removes stored cookies, cached files, browsing history. Useful for troubleshooting site issues or clearing sensitive session data.</span>
+          <span class="def-term">Browser Hardening</span><span class="def-val">Keep browser patched. Use ad blockers. Enable DNS over HTTPS (DoH). Disable password saving if using a password manager. Configure cookie settings. Enterprise: manage via Group Policy (GPMC).</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Malware Removal Process</div>
+        <div class="ts-steps">
+          <div class="ts-step"><strong>Identify and verify symptoms.</strong> Slow performance, pop-ups, redirections, fake alerts, unknown processes, high CPU/network usage.</div>
+          <div class="ts-step"><strong>Quarantine the infected system.</strong> Disconnect from network immediately. Prevents spread to other systems and stops C2 communication.</div>
+          <div class="ts-step"><strong>Disable System Restore.</strong> Prevents malware from hiding in restore points that would reinfect after cleaning.</div>
+          <div class="ts-step"><strong>Update definitions and scan in Safe Mode.</strong> Boot to Safe Mode to prevent malware from running during scan. Update AV definitions before scanning.</div>
+          <div class="ts-step"><strong>Remediate detected malware.</strong> Follow scanner recommendations. Quarantine or delete infected files.</div>
+          <div class="ts-step"><strong>Schedule scans and re-enable System Restore.</strong> Create a new, clean restore point.</div>
+          <div class="ts-step"><strong>Educate the user</strong> on how the infection occurred and how to prevent recurrence.</div>
+        </div>
+        <div class="callout callout-exam">Quarantine first, then disable System Restore — in that order. The exam tests this sequence. Quarantine prevents spread. Disabling System Restore prevents reinfection from a restore point containing malware.</div>
+        <p class="mini-h">Common Malware Symptoms</p>
+        <div class="tag-row">
+          <span class="tag tag-orange">Pop-ups and fake alerts</span>
+          <span class="tag tag-orange">Browser redirects</span>
+          <span class="tag tag-orange">Toolbars appeared</span>
+          <span class="tag tag-orange">Slow performance</span>
+          <span class="tag tag-orange">High CPU/network usage</span>
+          <span class="tag tag-orange">Unknown processes</span>
+          <span class="tag tag-orange">Files encrypted / ransom note</span>
+          <span class="tag tag-orange">AV disabled</span>
+          <span class="tag tag-orange">Accounts compromised</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ MODULE 20 – MOBILE SOFTWARE ═══ -->
+  <section class="chapter" id="m20">
+    <div class="chapter-header"><span class="chapter-num">MOD 20</span><h2 class="chapter-title">Supporting Mobile Software</h2><span class="chapter-obj">Obj 2.1 · 2.8 · 3.2 · 3.3</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Mobile OS Security</div>
+        <div class="def-grid">
+          <span class="def-term">Screen Lock</span><span class="def-val">PIN, password, pattern, fingerprint, or facial recognition. Prevents unauthorized physical access. Failed login attempts trigger increasing lockouts. Required for encryption to be meaningful.</span>
+          <span class="def-term">Data Protection Encryption</span><span class="def-val">iOS: Full-device encryption enabled automatically when a passcode is set. Android: File-based encryption for user data and settings when screen lock is configured. Both use hardware-backed keys.</span>
+          <span class="def-term">Biometric Authentication</span><span class="def-val">Face ID / Touch ID (iOS), fingerprint / face unlock (Android). "Something you are." Faster than PIN. Backup PIN/password always required.</span>
+          <span class="def-term">MFA on Mobile</span><span class="def-val">Authenticator apps (Google Authenticator, Microsoft Authenticator) generate TOTP codes. More secure than SMS 2FA. SMS susceptible to SIM swapping.</span>
+          <span class="def-term">Remote Wipe</span><span class="def-val">Erase all data from a lost/stolen device remotely. Full wipe (everything) or selective wipe (corporate data only via MDM containerization). Find My Device (Android), Find My (iOS).</span>
+          <span class="def-term">Locator Apps</span><span class="def-val">GPS + Wi-Fi + Bluetooth triangulation. Can track, lock, send message, or wipe remotely. Requires device to be powered on and connected.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Mobile Device Management (MDM)</div>
+        <div class="def-grid">
+          <span class="def-term">MDM Function</span><span class="def-val">Centrally manages and enforces security policies on enterprise and BYOD devices. Enroll devices, push configs, monitor compliance, remote wipe.</span>
+          <span class="def-term">Key MDM Capabilities</span><span class="def-val">Configure Wi-Fi and VPN profiles, enforce passcode/encryption, manage installed apps, regulate network access, enable/disable device features, remote updates, compliance monitoring.</span>
+          <span class="def-term">Microsoft Intune</span><span class="def-val">Cloud-based EMM (Enterprise Mobility Management). Manages iOS, Android, Windows, and macOS. Part of Microsoft 365. Integrates with Azure AD.</span>
+        </div>
+        <p class="mini-h">Deployment Models</p>
+        <div class="def-grid">
+          <span class="def-term">BYOD</span><span class="def-val">Bring Your Own Device. Employee owns. Lower cost to org. Less control and higher security risk. MDM containerization separates personal and corporate data.</span>
+          <span class="def-term">COPE</span><span class="def-val">Corporate Owned, Personally Enabled. Org owns, allows limited personal use. Best balance of control and flexibility.</span>
+          <span class="def-term">COBO</span><span class="def-val">Corporate Owned, Business Only. Strictest control. No personal use. Common for shared devices (kiosks, field tablets).</span>
+          <span class="def-term">CYOD</span><span class="def-val">Choose Your Own Device. Employee selects from org-approved device list. Org owns.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Mobile Security Threats</div>
+        <div class="def-grid">
+          <span class="def-term">Rooting (Android)</span><span class="def-val">Gaining superuser access through exploits or authorized unlock methods. Removes OS security restrictions. MDM should detect and block rooted devices from corporate access.</span>
+          <span class="def-term">Jailbreaking (iOS)</span><span class="def-val">Gains root access to iOS. Enables sideloading and customizations. Bypasses Apple's security model. Significantly weakens device security.</span>
+          <span class="def-term">Sideloading</span><span class="def-val">Installing apps from outside official app stores. Bypasses app vetting. Major source of mobile malware. MDM can prevent sideloading. Android allows it natively; iOS requires jailbreak.</span>
+          <span class="def-term">Malware Symptoms</span><span class="def-val">Excessive ads, fake security warnings, slow response, unexpected data usage, 2FA alerts on accounts you didn't initiate, high battery drain, apps you didn't install.</span>
+          <span class="def-term">Location Privacy</span><span class="def-val">Photos contain GPS geotags in EXIF metadata. Strip geotags before sharing publicly. Review which apps have location permission and whether it should be Always, While Using, or Never.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Mobile Troubleshooting</div>
+        <div class="def-grid">
+          <span class="def-term">Performance Issues</span><span class="def-val">Reboot first (clears RAM). Check storage (low storage degrades performance on both iOS and Android). Identify resource-intensive apps. Consider factory reset if persistent.</span>
+          <span class="def-term">Safe Mode (Android)</span><span class="def-val">Boots with only system apps — disables all third-party apps. Diagnoses whether a third-party app is causing the issue. Access by holding power button → long-press Power Off.</span>
+          <span class="def-term">App Issues</span><span class="def-val">Force stop → clear cache → clear data → uninstall and reinstall. Check for app updates.</span>
+          <span class="def-term">Failed OS Update</span><span class="def-val">Check: sufficient storage (iOS needs ~2GB free), battery (charge to 50%+), internet connection, device compatibility with new OS version.</span>
+          <span class="def-term">Connectivity Issues</span><span class="def-val">Toggle airplane mode (resets all radios). Forget and reconnect to Wi-Fi network. Check Bluetooth pairing. For NFC: unlock device, enable NFC, hold close to reader. Check carrier signal for cellular.</span>
+          <span class="def-term">Factory Reset</span><span class="def-val">Last resort — erases all data. iOS: Settings → General → Transfer or Reset iPhone → Erase All Content. Android: Settings → General Management → Reset → Factory Data Reset. Back up first.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ MODULE 21 – DATA SECURITY ═══ -->
+  <section class="chapter" id="m21">
+    <div class="chapter-header"><span class="chapter-num">MOD 21</span><h2 class="chapter-title">Using Data Security</h2><span class="chapter-obj">Obj 4.3 · 2.1 · 2.9 · 4.6 · 4.10</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Backup Methods & Strategy</div>
+        <table class="data-table">
+          <thead><tr><th>Type</th><th>What's Backed Up</th><th>Archive Bit</th><th>Backup Speed</th><th>Restore Speed</th></tr></thead>
+          <tbody>
+            <tr><td><span class="hl-gold">Full</span></td><td>All selected data regardless of previous backup</td><td>Cleared</td><td><span class="bad">Slowest</span></td><td><span class="good">Fastest (1 set)</span></td></tr>
+            <tr><td><span class="hl-gold">Incremental</span></td><td>Changed since last backup (full OR incremental)</td><td>Cleared</td><td><span class="good">Fastest</span></td><td><span class="bad">Slowest (full + all incrementals)</span></td></tr>
+            <tr><td><span class="hl-gold">Differential</span></td><td>Changed since last FULL only</td><td>NOT cleared</td><td><span class="neutral">Moderate (grows over time)</span></td><td><span class="neutral">Moderate (full + latest diff)</span></td></tr>
+          </tbody>
+        </table>
+        <p class="mini-h">Backup Best Practices</p>
+        <div class="def-grid">
+          <span class="def-term">3-2-1 Rule</span><span class="def-val">3 copies of data, on 2 different media types, with 1 copy stored off-site. Gold standard for backup strategy. Protects against hardware failure, local disaster, and site-level events.</span>
+          <span class="def-term">GFS Rotation Scheme</span><span class="def-val">Grandfather-Father-Son. Son = daily (reused weekly). Father = weekly (reused monthly). Grandfather = monthly (reused yearly). Structured tape rotation for long-term retention.</span>
+          <span class="def-term">Off-site / Cloud</span><span class="def-val">Off-site reduces risk from local disasters (fire, flood, theft). Cloud backup provides geographic redundancy and accessibility.</span>
+          <span class="def-term">Backup Testing</span><span class="def-val">An untested backup is not a backup. Regularly perform test restores. Verify backup integrity. Document recovery procedures and test them.</span>
+          <span class="def-term">Windows Backup Tools</span><span class="def-val">File History (incremental per-file backup, Previous Versions tab). Backup and Restore Center (system image backup). Reset this PC (not a backup — wipes and reinstalls).</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Data Classification & Handling</div>
+        <div class="def-grid">
+          <span class="def-term">Regulated Data</span><span class="def-val">Data subject to legal requirements: PII (Personally Identifiable Information), PHI (Protected Health Information, HIPAA), PCI (cardholder data, PCI DSS), financial records, student records (FERPA).</span>
+          <span class="def-term">Prohibited Content</span><span class="def-val">Data on a system not permitted by policy or regulation. Examples: pirated software, illicit content, unauthorized confidential data. Technicians must report findings through proper channels.</span>
+          <span class="def-term">Licensing Compliance</span><span class="def-val">Software must be properly licensed. Product key generates unique product ID. DRM (Digital Rights Management) limits device count. Violating license terms = compliance risk. Review EULA before installation.</span>
+          <span class="def-term">NDA (Non-Disclosure Agreement)</span><span class="def-val">Legally binding contract protecting sensitive information shared between parties. Prevents disclosure to third parties. Sign before accessing confidential client or company data.</span>
+          <span class="def-term">Open Source Licensing</span><span class="def-val">Permissive (MIT, Apache): free to use, modify, and distribute — even in proprietary products. Copyleft (GPL): derivative works must also be open source. Permissive = less restrictive.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Data Destruction & Disposal</div>
+        <div class="def-grid">
+          <span class="def-term">Erasing / Wiping</span><span class="def-val">Software overwrites all data on the drive. Third-party tools (DBAN, Eraser). Secure for HDDs. Not reliable for SSDs due to wear leveling.</span>
+          <span class="def-term">Low-Level Format</span><span class="def-val">Vendor tool that overwrites at the hardware level. More thorough than OS-level format. Still software-based.</span>
+          <span class="def-term">Degaussing</span><span class="def-val">Strong magnetic field destroys magnetic data patterns. Renders HDD permanently unusable. Effective for magnetic media only — useless on SSDs.</span>
+          <span class="def-term">Physical Destruction</span><span class="def-val">Shredding (industrial), drilling/punching platters, crushing. Absolute certainty — no data recovery possible. Best for SSDs, optical media, and when degaussing isn't available.</span>
+          <span class="def-term">Sanitization</span><span class="def-val">Thorough removal of all data so no file remnants can be recovered. Combination of overwriting and verification. Required before selling, donating, or disposing of any device.</span>
+          <span class="def-term">Recycling / E-Waste</span><span class="def-val">Electronics contain hazardous materials (lead, mercury, cadmium). Must be disposed via certified e-waste facilities. Never standard trash. Batteries require separate recycling.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Artificial Intelligence Basics</div>
+        <div class="def-grid">
+          <span class="def-term">NLP (Natural Language Processing)</span><span class="def-val">AI understanding and generating human language. Powers chatbots, voice assistants, and text analysis.</span>
+          <span class="def-term">ML (Machine Learning)</span><span class="def-val">AI learning from data to make predictions without being explicitly programmed. Requires quality training data.</span>
+          <span class="def-term">CV (Computer Vision)</span><span class="def-val">AI interpreting visual information from images and video. Used in security cameras, facial recognition, and medical imaging.</span>
+          <span class="def-term">AI Limitations</span><span class="def-val">Bias (AI inherits biases from training data), Hallucinations (generates false/fabricated information confidently), Accuracy (output quality depends on training data quality). Always verify AI output before use.</span>
+          <span class="def-term">Public vs Private AI</span><span class="def-val">Public (ChatGPT, Gemini): openly accessible, trained on public data. Private: organization-specific, may use internal/proprietary data. Protect sensitive data — never input confidential info into public AI models.</span>
+          <span class="def-term">AI Policy / AUP</span><span class="def-val">Organizations should establish AI acceptable use policies: what AI tools are permitted, restrictions on inputting sensitive data, attribution rules, prohibition of AI-generated work without disclosure.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ MODULE 22 – OPERATIONAL PROCEDURES ═══ -->
+  <section class="chapter" id="m22">
+    <div class="chapter-header"><span class="chapter-num">MOD 22</span><h2 class="chapter-title">Implementing Operational Procedures</h2><span class="chapter-obj">Obj 4.1 · 4.2 · 4.4 · 4.5 · 4.8</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Change Management</div>
+        <div class="ts-steps">
+          <div class="ts-step"><strong>Submit Request for Change (RFC).</strong> Document what change is needed, why, and the expected impact.</div>
+          <div class="ts-step"><strong>Risk Analysis.</strong> Identify impact on critical systems, safety risks, severity, and cause-effect relationships.</div>
+          <div class="ts-step"><strong>CAB Review.</strong> Change Advisory Board evaluates business case, risk, and technical impact. Minor changes approved by supervisor. Major changes require CAB.</div>
+          <div class="ts-step"><strong>Schedule and approve.</strong> Define maintenance window. Notify affected users and stakeholders.</div>
+          <div class="ts-step"><strong>Implement.</strong> Follow approved change procedure. Peer review verifies accuracy before restoring service.</div>
+          <div class="ts-step"><strong>Rollback plan ready.</strong> Define backout procedure if change causes issues. Execute rollback if needed.</div>
+          <div class="ts-step"><strong>End-user acceptance and document.</strong> Confirm functionality with users. Update documentation, diagrams, and policies.</div>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Asset Management</div>
+        <div class="def-grid">
+          <span class="def-term">Asset Inventory</span><span class="def-val">Track: asset name, ID/tag, manufacturer, model, serial number, specs, purchase date, warranty expiration, location, assigned user. Use CMDB (Configuration Management Database), spreadsheets, or ticketing systems.</span>
+          <span class="def-term">Lifecycle Management</span><span class="def-val">Procurement → deployment → maintenance → end-of-life → disposal. Plan replacements before EOL — don't wait until hardware fails or software becomes unsupported.</span>
+          <span class="def-term">Software Licensing</span><span class="def-val">Track all software licenses. Maintain compliance — audit regularly. License violations = legal and financial risk. Document license type (per seat, per device, concurrent, OEM, volume).</span>
+          <span class="def-term">Warranty & Support</span><span class="def-val">Document warranty expiration dates. Know what is covered (parts, labor, on-site). Service plan tiers: on-site 4-hour same day (highest cost), same business day, next business day.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Electrical Safety</div>
+        <div class="def-grid">
+          <span class="def-term">General Rules</span><span class="def-val">Disconnect power before working on hardware. Never access PSU internals — capacitors retain charge even unplugged. Use insulated tools. Know power shutoff locations.</span>
+          <span class="def-term">Fire Safety</span><span class="def-val">Electrical fires: use CO₂ extinguisher (Class C). Never use water on electrical fires. Know the location of power shutoffs.</span>
+          <span class="def-term">ESD (Electrostatic Discharge)</span><span class="def-val">Static electricity can damage components invisible to the eye. Mitigate: wear ESD wrist strap (grounded), use anti-static mats, keep components in anti-static bags, avoid carpet areas. Ground yourself before touching components.</span>
+          <span class="def-term">UPS Sizing</span><span class="def-val">VA = Wattage × 1.67. Size UPS at 20–30% above calculated load. Runtime depends on battery capacity (Ah) and actual load. UPS bridges gap between power loss and generator start.</span>
+        </div>
+        <p class="mini-h">Power Issues & Mitigations</p>
+        <div class="def-grid">
+          <span class="def-term">Surge / Spike</span><span class="def-val">Brief voltage increase. Can damage components. Mitigate with surge suppressor.</span>
+          <span class="def-term">Brownout</span><span class="def-val">Sustained voltage reduction. High-power equipment causes this. UPS and line conditioner help.</span>
+          <span class="def-term">Blackout</span><span class="def-val">Complete power loss. UPS allows graceful shutdown. Generator provides extended power for critical systems.</span>
+          <span class="def-term">Surge Suppressor</span><span class="def-val">Filters voltage spikes. NOT the same as a power strip (which has no surge protection). Check joule rating — higher = better protection.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Environmental & Safety Procedures</div>
+        <div class="def-grid">
+          <span class="def-term">Hazardous Materials (MSDS/SDS)</span><span class="def-val">Material Safety Data Sheet / Safety Data Sheet. Provides handling, storage, and disposal guidelines for hazardous materials. Always consult MSDS before handling toner, chemicals, batteries.</span>
+          <span class="def-term">Toner Handling</span><span class="def-val">Wear gloves, goggles, and mask — toner is a fine particulate. If spilled, use a toner vacuum (not regular vacuum — spreads particles). Use vendor disposal/recycling programs.</span>
+          <span class="def-term">Battery Disposal</span><span class="def-val">Never standard trash. Recycle via certified programs. Lithium batteries can cause fires if punctured or disposed of incorrectly.</span>
+          <span class="def-term">E-Waste Disposal</span><span class="def-val">Electronics contain lead, mercury, cadmium, and other toxins. Use certified e-waste recycling facilities. Document the disposal for compliance.</span>
+          <span class="def-term">Temperature & Humidity</span><span class="def-val">Allow new equipment to adjust to room temperature before powering on (prevents condensation). Maintain ~50% relative humidity. Ventilation prevents heat buildup.</span>
+          <span class="def-term">Dust Cleanup</span><span class="def-val">Use compressed air or PC vacuum. Wear mask (fine dust). Never use toner in a regular vacuum. Clean regularly — dust causes overheating.</span>
+          <span class="def-term">Lifting Safety</span><span class="def-val">Keep load close to body, at waist level. Bend at knees, not waist. No twisting. Get help for heavy objects. Use proper equipment (dolly, lift) for servers and UPS units.</span>
+          <span class="def-term">Trip Hazards</span><span class="def-val">Secure cables — use cable management trays, ties, and covers. Never run cables across walkways without covers. Comply with building codes.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Scripting Basics</div>
+        <table class="data-table">
+          <thead><tr><th>Language</th><th>Extension</th><th>Platform</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td><span class="hl-gold">Bash</span></td><td><code>.sh</code></td><td>Linux / macOS</td><td>Set execute: <code>chmod +x script.sh</code>. Run: <code>./script.sh</code>. Comment: <code>#</code>. Shebang: <code>#!/bin/bash</code>.</td></tr>
+            <tr><td><span class="hl-gold">PowerShell</span></td><td><code>.ps1</code></td><td>Windows (also Linux/macOS)</td><td>Cmdlets use Verb-Noun format (Get-Process, Set-Item). Edit in PowerShell ISE or VS Code. Comment: <code>#</code>.</td></tr>
+            <tr><td><span class="hl-gold">Batch</span></td><td><code>.bat / .cmd</code></td><td>Windows (legacy)</td><td>CMD-based. Simple automation. Comment: <code>REM</code>. Limited compared to PowerShell.</td></tr>
+            <tr><td><span class="hl-gold">VBScript</span></td><td><code>.vbs</code></td><td>Windows</td><td>Legacy. Runs via wscript.exe or cscript.exe. Comment: <code>'</code> (apostrophe).</td></tr>
+            <tr><td><span class="hl-gold">Python</span></td><td><code>.py / .pyw</code></td><td>Cross-platform</td><td>Python 3 current standard (Python 2 EOL 2020). Interpreter-based. Comment: <code>#</code>.</td></tr>
+            <tr><td><span class="hl-gold">JavaScript</span></td><td><code>.js</code></td><td>Browsers / servers</td><td>Web scripting. Node.js for server-side. JXA for macOS automation.</td></tr>
+          </tbody>
+        </table>
+        <p class="mini-h">Core Script Constructs</p>
+        <div class="def-grid">
+          <span class="def-term">Variables</span><span class="def-val">Store values. Bash: <code>NAME="value"</code> (no spaces). PowerShell: <code>$name = "value"</code>. Reference with <code>$NAME</code> (Bash) / <code>$name</code> (PS).</span>
+          <span class="def-term">Comments</span><span class="def-val"><code>#</code> in Bash, PowerShell, Python. <code>REM</code> in Batch. <code>'</code> in VBScript. Comments are not executed — used for documentation.</span>
+          <span class="def-term">Shebang (<code>#!</code>)</span><span class="def-val">First line of Unix scripts. Specifies interpreter. <code>#!/bin/bash</code>. NOT a comment despite starting with <code>#</code>.</span>
+          <span class="def-term">Control Flow</span><span class="def-val">If/else (conditional branching). For/while/until loops (repetition). Prevent infinite loops — always include an exit condition.</span>
+          <span class="def-term">Operators</span><span class="def-val">Comparison: <code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>. Logical: <code>&amp;&amp;</code> (AND), <code>||</code> (OR).</span>
+        </div>
+        <p class="mini-h">Scripting Best Practices</p>
+        <ul class="concept-list">
+          <li><strong>Test in development</strong> before deploying to production. Never test destructive scripts live.</li>
+          <li><strong>Run with minimal privileges</strong> — don't run scripts as admin unless absolutely required.</li>
+          <li><strong>Scan for vulnerabilities</strong> — scripts can be attack vectors; restrict who can modify them.</li>
+          <li><strong>Avoid infinite loops</strong> — always include exit conditions and handle edge cases.</li>
+          <li><strong>Comment your code</strong> — future maintainers (and future you) will thank you.</li>
+          <li><strong>Store securely</strong> — restrict access to script files; treat scripts containing credentials as secrets.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<footer class="site-footer">
+  COMPTIA A+ CORE 2 · 220-1202 · STAR V LEARNING CENTERS · JACKSONVILLE, FL<br>
+  WINDOWS · LINUX · macOS · SECURITY · SCRIPTING · ALL 4 DOMAINS COVERED
+</footer>
+
+</body>
+</html>
